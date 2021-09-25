@@ -12,7 +12,11 @@ function Form({ onSubmit, children, defaultValues }) {
   const methods = useForm({ defaultValues })
 
   // TODO wrap form with FormProvider context to make child inputs work
-  return <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+    </FormProvider>
+  )
 }
 
 export default Form

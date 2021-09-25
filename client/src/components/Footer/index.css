@@ -1,0 +1,15 @@
+.footer {
+  background-color: #c6ede6;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.footer__content {
+  color: #a2b3cb;
+  font-size: medium;
+  -webkit-text-stroke: 1px #655859;
+}

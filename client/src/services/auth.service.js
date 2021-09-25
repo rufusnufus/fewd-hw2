@@ -18,6 +18,14 @@ class AuthService {
 
   async register(login, password) {
     // TODO implement register request similarly to login request
+    try {
+      await axios.post(`${this.API_ENDPOINT}/register`, { login, password })
+    } catch (e) {
+      if (e.response) {
+        throw new Error(e.response.data.message)
+      }
+      throw e
+    }
   }
 
   async login(login, password) {

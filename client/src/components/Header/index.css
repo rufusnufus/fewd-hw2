@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: #c6ede6;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 25px;
+  text-decoration: none;
+  color: #a2b3cb;
+  -webkit-text-stroke: 1px #655859;
+  /* font-family: 'Lobster', cursive; */
+}
+
+.header__logo {
+  height: 75px;
+  padding-left: 15px;
+}
+
+.header__title {
+  padding-left: 15px;
+}
+
+.header__navbar {
+  text-decoration: none;
+  color: #a2b3cb;
+  -webkit-text-stroke: 1px #655859;
+  padding-left: 10px;
+}

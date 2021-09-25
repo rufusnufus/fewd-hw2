@@ -1,3 +1,4 @@
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["getUsers", "getUserById"] }] */
 import axios from 'axios'
 import authService from './auth.service'
 
@@ -10,15 +11,11 @@ class UserService {
   }
 
   async getUsers() {
-    const response = await axios.get(/* TODO implement get users method, provide token to Authorization header param */)
+    const response = await axios.get(`${this.API_ENDPOINT}/info`, {
+      headers: { Authorization: this.authService.TOKEN }
+    })
 
     return response.data
-  }
-
-  async getUserById(id) {
-    const response = await axios.get(/* TODO implement getUserById if you would implement optional part */)
-
-    return response.headers
   }
 }
 

@@ -1,11 +1,15 @@
 import React from 'react'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 
-function Layout({ children }) {
+import './index.css'
+
+function Layout({ children, layoutClassName }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className={layoutClassName || 'layout__main'}>{children}</main>
+      <Footer />
     </>
   )
 }

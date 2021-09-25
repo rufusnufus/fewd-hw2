@@ -1,13 +1,15 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: '/src/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
-    clean: true
+    clean: true,
+    publicPath: '/'
   },
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
@@ -22,7 +24,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['.js'] // TODO add JSX extension to allow webpack make imports of such files (without specifying extension in import statement)
+    extensions: ['.js', '.jsx'] // TODO add JSX extension to allow webpack make imports of such files (without specifying extension in import statement)
   },
   module: {
     rules: [
@@ -30,13 +32,25 @@ module.exports = {
         test: /\.js(x)$/,
         exclude: /node_modules/,
         use: {
-          loader: '' /* TODO set correct loader to make code transpilation from jsx */,
+          loader: 'babel-loader' /* TODO set correct loader to make code transpilation from jsx */,
           options: {}
         }
       },
       {
         test: /\.(png|svg|jpg)$/,
         use: 'file-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+            options: {
+              url: true
+            }
+          }
+        ]
       }
     ]
   },
@@ -45,8 +59,10 @@ module.exports = {
       extensions: ['js', 'jsx'],
       exclude: 'node_modules'
     }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: '' // TODO create html template file and set correct path to html template file
+      title: 'FEWD HW2',
+      template: '/public/index.html' // TODO create html template file and set correct path to html template file
     })
   ]
 }

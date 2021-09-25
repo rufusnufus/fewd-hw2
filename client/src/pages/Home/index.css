@@ -1,0 +1,8 @@
+.home {
+  margin-top: 79px;
+  margin-bottom: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  row-gap: 40px;
+}

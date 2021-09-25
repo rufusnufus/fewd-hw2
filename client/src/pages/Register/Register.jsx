@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import LoginForm from '../components/LoginForm/LoginForm'
-import authService from '../services/auth.service'
-import Layout from '../components/Layout/Layout'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import authService from '../../services/auth.service'
+import Layout from '../../components/Layout/Layout'
 
 function Register() {
   const history = useHistory()
@@ -11,6 +11,14 @@ function Register() {
     // TODO call register from authService.
     // Use history.replace to login page if register successes
     // and set error state if error
+    authService
+      .register(login, password)
+      .then(() => {
+        history.replace('/login')
+      })
+      .catch(() => {
+        setError('Some error happened')
+      })
   }
 
   return (

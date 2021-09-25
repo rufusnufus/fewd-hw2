@@ -1,0 +1,13 @@
+.card {
+  width: 330px;
+  background-color: #c6ede6;
+  color: #a2b3cb;
+  -webkit-text-stroke: 1px #655859;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.card__image {
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+}

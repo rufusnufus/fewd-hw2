@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import LoginForm from '../components/LoginForm/LoginForm'
-import authService from '../services/auth.service'
-import Layout from '../components/Layout/Layout'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import authService from '../../services/auth.service'
+import Layout from '../../components/Layout/Layout'
 
 function Login() {
   const history = useHistory()
   const [error, setError] = useState()
   const onSubmit = async ({ login, password }) => {
-    // TODO call login from authService.
-    // Use history.replace to home page if login successes
-    // and set error state if error
+    authService
+      .login(login, password)
+      .then(() => {
+        history.replace('/')
+      })
+      .catch(() => {
+        setError('Some error happened')
+      })
   }
 
   return (
